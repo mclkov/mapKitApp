@@ -27,17 +27,11 @@ class MainVC: UIViewController {
     }
     
     @objc func startSearch() {
-
-    }
-    
-    func getQuery() -> String? {
-        guard let query = searchBar.text else { return nil }
-        let trimmedQuery = query.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        if trimmedQuery == "" {
-            return nil
-        } else {
-            return query
+        getPlacePinArray { (pins) in
+            let pinsCount = pins.count
+            for i in 0..<pinsCount {
+                self.addPin(pins[i])
+            }
         }
     }
     
@@ -55,29 +49,28 @@ class MainVC: UIViewController {
             let placesCount = places.count
             for i in 0..<placesCount {
                 let place = places[i]
-                let coordinates = self.getCoordinates(coordinatesString: place.coordinates)
-                pins.append(PlacePin(title: place.name, subtitle: place.type, coordinate: coordinates))
+                if let coordinatesString = place.coordinates {
+                    let coordinates = coordinatesString.getCoordinates()
+                    pins.append(PlacePin(title: place.name, subtitle: place.type, coordinate: coordinates))
+                }
             }
+            completionHandler(pins)
         }
     }
     
-    func getCoordinates(coordinatesString: Coordinates?) -> CLLocationCoordinate2D? {
-        guard let coordinates = coordinatesString else { return nil }
-        guard let latitudeString = coordinates.latitude else { return nil }
-        guard let longitudeString = coordinates.longitude else { return nil }
+    func getQuery() -> String? {
+        guard let query = searchBar.text else { return nil }
+        let trimmedQuery = query.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        return getCoordinatesInDouble(latitude: latitudeString, longitude: longitudeString)
-    }
-    
-    func getCoordinatesInDouble(latitude: String, longitude: String) -> CLLocationCoordinate2D? {
-        guard let latitudeDouble = Double(latitude) else { return nil }
-        guard let longitudeDouble = Double(longitude) else { return nil }
-        
-        return CLLocationCoordinate2D(latitude: latitudeDouble, longitude: longitudeDouble)
+        if trimmedQuery == "" {
+            return nil
+        } else {
+            return query
+        }
     }
     
     func addPin(_ pin: PlacePin) {
-        
+        self.mapView.addAnnotation(pin)
     }
 }
 
