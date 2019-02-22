@@ -29,6 +29,10 @@ class WebRequestImpl: WebRequest {
         self.userAgent = userAgent
     }
     
+    func applyRequestMethod() {
+        request?.httpMethod = self.method.rawValue
+    }
+    
     func appyUserAgent() {
         request?.setValue(self.userAgent, forHTTPHeaderField: "User-Agent")
     }
@@ -36,6 +40,7 @@ class WebRequestImpl: WebRequest {
     func execute(completionHandler: @escaping (_ result: Data?) -> Void) {
         guard let request = parseUrl() else { return }
         self.appyUserAgent()
+        self.applyRequestMethod()
         
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
@@ -55,8 +60,6 @@ class WebRequestImpl: WebRequest {
                 completionHandler(nil)
                 return
             }
-            
-            print(responseData)
             completionHandler(responseData)
         }
         task.resume()
