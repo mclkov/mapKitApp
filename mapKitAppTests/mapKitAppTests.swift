@@ -35,14 +35,14 @@ class mapKitAppTests: XCTestCase {
         let request = WebRequestImpl(url: "https://google.com", method: .get)
         
         let expectation = self.expectation(description: "WebAccess")
-        var successResult: Bool?
-        request.execute { (success) in
+        var remoteResult: Data?
+        request.execute { (result) in
             expectation.fulfill()
-            successResult = success
+            remoteResult = result
         }
         
         waitForExpectations(timeout: 5, handler: nil)
-        XCTAssert(successResult == true)
+        XCTAssert(remoteResult != nil)
     }
 
 }

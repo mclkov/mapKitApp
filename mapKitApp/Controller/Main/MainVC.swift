@@ -29,10 +29,7 @@ class MainVC: UIViewController {
     @objc func startSearch() {
         print("search")
         
-        let request = WebRequestImpl(url: "https://google.com", method: .get)
-        request.execute { (success) in
-            print(success)
-        }
+        SearchService.shared.findPlaces(query: "Arena")
     }
 }
 

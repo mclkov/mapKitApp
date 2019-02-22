@@ -8,7 +8,7 @@
 
 import Foundation
 
-class WebRequestImpl: WebRequest {
+class WebRequestImpl: WebRequest {    
     var url: String
     var method: RequestMethod
     
@@ -34,7 +34,7 @@ class WebRequestImpl: WebRequest {
         request?.setValue(self.userAgent, forHTTPHeaderField: "User-Agent")
     }
     
-    func execute(completionHandler: @escaping (_ success: Bool) -> Void) {
+    func execute(completionHandler: @escaping (_ result: Data?) -> Void) {
         guard let request = parseUrl() else { return }
         self.appyUserAgent()
         
@@ -47,18 +47,18 @@ class WebRequestImpl: WebRequest {
             guard error == nil else {
                 print("Error: calling GET")
                 print(error!)
-                completionHandler(false)
+                completionHandler(nil)
                 return
             }
             // make sure we got data
             guard let responseData = data else {
                 print("Error: did not receive data")
-                completionHandler(false)
+                completionHandler(nil)
                 return
             }
             
             print(responseData)
-            completionHandler(true)
+            completionHandler(responseData)
         }
         task.resume()
     }
