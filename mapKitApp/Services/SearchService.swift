@@ -8,8 +8,13 @@
 
 import Foundation
 
+enum RequestMethod {
+    case get
+    case post
+}
+
 protocol WebRequest {
-    init(url: String, method: String)
+    init(url: String, method: RequestMethod)
     
 }
 

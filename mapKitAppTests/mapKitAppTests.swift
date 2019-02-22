@@ -30,5 +30,19 @@ class mapKitAppTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func testWebRequest() {
+        let request = WebRequestImpl(url: "https://google.com", method: .get)
+        
+        let expectation = self.expectation(description: "WebAccess")
+        var successResult: Bool?
+        request.execute { (success) in
+            expectation.fulfill()
+            successResult = success
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+        XCTAssert(successResult == true)
+    }
 
 }
