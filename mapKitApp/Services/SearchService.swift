@@ -38,6 +38,7 @@ class SearchService {
                 completionHandler(jsonData)
             } catch let jsonError {
                 print("Error: serializing \(jsonError)")
+                completionHandler(nil)
             }
         }
     }

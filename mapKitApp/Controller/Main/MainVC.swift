@@ -27,14 +27,7 @@ class MainVC: UIViewController {
     }
     
     @objc func startSearch() {
-        let searchService = SearchService.shared
-        guard let query = getQuery() else { return }
-        
-        searchService.setQuery(query)
-        print("search: ", query)
-        searchService.findPlaces { (jsonData) in
-            print(jsonData)
-        }
+
     }
     
     func getQuery() -> String? {
@@ -48,6 +41,42 @@ class MainVC: UIViewController {
         }
     }
     
-    func addPin(_ pin: )
+    func getPlacePinArray(_ completionHandler: @escaping (_ pins: [PlacePin]) -> Void) {
+        let searchService = SearchService.shared
+        guard let query = getQuery() else { return }
+        
+        searchService.setQuery(query)
+        print("search: ", query)
+        searchService.findPlaces { (jsonData) in
+            var pins = [PlacePin]()
+            guard let data = jsonData else { return }
+            guard let places = data.places else { return }
+            
+            let placesCount = places.count
+            for i in 0..<placesCount {
+                let place = places[i]
+                let coordinates = self.getCoordinates(coordinatesString: place.coordinates)
+            }
+        }
+    }
+    
+    func getCoordinates(coordinatesString: Coordinates?) -> CLLocationCoordinate2D? {
+        guard let coordinates = coordinatesString else { return nil }
+        guard let latitudeString = coordinates.latitude else { return nil }
+        guard let longitudeString = coordinates.longitude else { return nil }
+        
+        return getCoordinatesInDouble(latitude: latitudeString, longitude: longitudeString)
+    }
+    
+    func getCoordinatesInDouble(latitude: String, longitude: String) -> CLLocationCoordinate2D? {
+        guard let latitudeDouble = Double(latitude) else { return nil }
+        guard let longitudeDouble = Double(longitude) else { return nil }
+        
+        return CLLocationCoordinate2D(latitude: latitudeDouble, longitude: longitudeDouble)
+    }
+    
+    func addPin(_ pin: PlacePin) {
+        
+    }
 }
 
