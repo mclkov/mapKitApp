@@ -22,6 +22,7 @@
 		606DBCF5222048DE00621EF1 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606DBCF0222048DE00621EF1 /* Coordinates.swift */; };
 		606DBCF6222048DE00621EF1 /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606DBCF1222048DE00621EF1 /* ApiResponse.swift */; };
 		606DBCF7222048DE00621EF1 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606DBCF2222048DE00621EF1 /* Place.swift */; };
+		606DBCF92220565900621EF1 /* PlacePin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606DBCF82220565900621EF1 /* PlacePin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		606DBCF0222048DE00621EF1 /* Coordinates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		606DBCF1222048DE00621EF1 /* ApiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
 		606DBCF2222048DE00621EF1 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		606DBCF82220565900621EF1 /* PlacePin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 		606DBCE7222014EC00621EF1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				606DBCFA2220566000621EF1 /* Main */,
 				606DBCED222048C600621EF1 /* API */,
 			);
 			path = Model;
@@ -177,6 +180,14 @@
 				606DBCF2222048DE00621EF1 /* Place.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		606DBCFA2220566000621EF1 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				606DBCF82220565900621EF1 /* PlacePin.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				606DBCF6222048DE00621EF1 /* ApiResponse.swift in Sources */,
+				606DBCF92220565900621EF1 /* PlacePin.swift in Sources */,
 				606DBCC022200D1C00621EF1 /* MainVC.swift in Sources */,
 				606DBCE32220116C00621EF1 /* MainConstraints.swift in Sources */,
 				606DBCEC2220157500621EF1 /* WebRequestImpl.swift in Sources */,

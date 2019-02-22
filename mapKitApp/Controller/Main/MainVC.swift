@@ -47,5 +47,7 @@ class MainVC: UIViewController {
             return query
         }
     }
+    
+    func addPin(_ pin: )
 }
 
