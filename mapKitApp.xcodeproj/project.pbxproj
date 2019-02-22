@@ -17,6 +17,11 @@
 		606DBCE6222013A600621EF1 /* MainVC+UISearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606DBCE5222013A600621EF1 /* MainVC+UISearchBarDelegate.swift */; };
 		606DBCEA2220152100621EF1 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606DBCE92220152100621EF1 /* SearchService.swift */; };
 		606DBCEC2220157500621EF1 /* WebRequestImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606DBCEB2220157500621EF1 /* WebRequestImpl.swift */; };
+		606DBCF3222048DE00621EF1 /* LifeSpan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606DBCEE222048DE00621EF1 /* LifeSpan.swift */; };
+		606DBCF4222048DE00621EF1 /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606DBCEF222048DE00621EF1 /* Area.swift */; };
+		606DBCF5222048DE00621EF1 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606DBCF0222048DE00621EF1 /* Coordinates.swift */; };
+		606DBCF6222048DE00621EF1 /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606DBCF1222048DE00621EF1 /* ApiResponse.swift */; };
+		606DBCF7222048DE00621EF1 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606DBCF2222048DE00621EF1 /* Place.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +49,11 @@
 		606DBCE5222013A600621EF1 /* MainVC+UISearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainVC+UISearchBarDelegate.swift"; sourceTree = "<group>"; };
 		606DBCE92220152100621EF1 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		606DBCEB2220157500621EF1 /* WebRequestImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRequestImpl.swift; sourceTree = "<group>"; };
+		606DBCEE222048DE00621EF1 /* LifeSpan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeSpan.swift; sourceTree = "<group>"; };
+		606DBCEF222048DE00621EF1 /* Area.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
+		606DBCF0222048DE00621EF1 /* Coordinates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
+		606DBCF1222048DE00621EF1 /* ApiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
+		606DBCF2222048DE00621EF1 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +153,7 @@
 		606DBCE7222014EC00621EF1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				606DBCED222048C600621EF1 /* ResponseApi */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -154,6 +165,18 @@
 				606DBCEB2220157500621EF1 /* WebRequestImpl.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		606DBCED222048C600621EF1 /* ResponseApi */ = {
+			isa = PBXGroup;
+			children = (
+				606DBCF1222048DE00621EF1 /* ApiResponse.swift */,
+				606DBCEF222048DE00621EF1 /* Area.swift */,
+				606DBCF0222048DE00621EF1 /* Coordinates.swift */,
+				606DBCEE222048DE00621EF1 /* LifeSpan.swift */,
+				606DBCF2222048DE00621EF1 /* Place.swift */,
+			);
+			path = ResponseApi;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,13 +279,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				606DBCF6222048DE00621EF1 /* ApiResponse.swift in Sources */,
 				606DBCC022200D1C00621EF1 /* MainVC.swift in Sources */,
 				606DBCE32220116C00621EF1 /* MainConstraints.swift in Sources */,
 				606DBCEC2220157500621EF1 /* WebRequestImpl.swift in Sources */,
+				606DBCF3222048DE00621EF1 /* LifeSpan.swift in Sources */,
 				606DBCBE22200D1C00621EF1 /* AppDelegate.swift in Sources */,
 				606DBCEA2220152100621EF1 /* SearchService.swift in Sources */,
 				606DBCE6222013A600621EF1 /* MainVC+UISearchBarDelegate.swift in Sources */,
+				606DBCF4222048DE00621EF1 /* Area.swift in Sources */,
 				606DBCE022200E3E00621EF1 /* MainLayout.swift in Sources */,
+				606DBCF5222048DE00621EF1 /* Coordinates.swift in Sources */,
+				606DBCF7222048DE00621EF1 /* Place.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
