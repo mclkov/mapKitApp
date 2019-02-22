@@ -25,9 +25,14 @@ class SearchService {
         let url = getQueryString(query: query)
         let request: WebRequest = WebRequestImpl(url: url, method: .get)
         request.execute { (result) in
-            guard let result = result else { return }
-            let resultString = String(data: result, encoding: String.Encoding.utf8)
-            print(resultString)
+        guard let data = result else { return }
+        
+            do {
+                let jsonData = try JSONDecoder().decode(ApiResponse.self, from: data)
+                print(jsonData.count)
+            } catch let jsonError {
+                print("Error: serializing \(jsonError)")
+            }
         }
     }
     
