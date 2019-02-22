@@ -106,8 +106,8 @@
 		606DBCDE22200DB700621EF1 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				606DBCC622200D1D00621EF1 /* LaunchScreen.storyboard */,
 				606DBCDF22200E3E00621EF1 /* MainLayout.swift */,
+				606DBCC622200D1D00621EF1 /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
