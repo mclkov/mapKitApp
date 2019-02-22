@@ -56,6 +56,7 @@ class MainVC: UIViewController {
             for i in 0..<placesCount {
                 let place = places[i]
                 let coordinates = self.getCoordinates(coordinatesString: place.coordinates)
+                pins.append(PlacePin(title: place.name, subtitle: place.type, coordinate: coordinates))
             }
         }
     }
