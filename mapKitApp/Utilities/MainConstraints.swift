@@ -6,10 +6,11 @@
 //  Copyright © 2019 McL. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct MainConstants {
-    let apiUrl = "https://musicbrainz.org/ws/2/place"
-    let placeOpenYear: Double = 1990.0
-    let resultsLimitPerRequest = 20
+    static let apiUrl = "https://musicbrainz.org/ws/2/place"
+    static let placeOpenYear: Double = 1990.0
+    static let resultsLimitPerRequest = 20
+    static let startSearchAfterPressedKeyDelay = 0.5
 }
