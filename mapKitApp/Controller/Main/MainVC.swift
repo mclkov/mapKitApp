@@ -27,6 +27,7 @@ class MainVC: UIViewController {
     }
     
     @objc func startSearch() {
+        removeAllPins()
         getPlacePinArray { (pins) in
             let pinsCount = pins.count
             for i in 0..<pinsCount {
@@ -38,9 +39,8 @@ class MainVC: UIViewController {
     func getPlacePinArray(_ completionHandler: @escaping (_ pins: [PlacePin]) -> Void) {
         let searchService = SearchService.shared
         guard let query = getQuery() else { return }
-        
         searchService.setQuery(query)
-        print("search: ", query)
+        
         searchService.findPlaces { (jsonData) in
             var pins = [PlacePin]()
             guard let data = jsonData else { return }
@@ -70,7 +70,13 @@ class MainVC: UIViewController {
     }
     
     func addPin(_ pin: PlacePin) {
-        self.mapView.addAnnotation(pin)
+        DispatchQueue.main.async {
+            self.mapView.addAnnotation(pin)
+        }
+    }
+    
+    func removeAllPins() {
+        self.mapView.removeAnnotations(self.mapView.annotations)
     }
 }
 

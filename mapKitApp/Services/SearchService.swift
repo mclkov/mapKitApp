@@ -28,17 +28,19 @@ class SearchService {
     }
     
     func findPlaces(_ completionHandler: @escaping (_ data: ApiResponse?) -> Void) {
-        let path = getQueryString(query: query)
-        let request: WebRequest = WebRequestImpl(website: MainConstants.apiUrl, method: .get)
-        request.setPath(path)
-        request.execute { (result) in
-            guard let data = result else { return }
-            do {
-                let jsonData = try JSONDecoder().decode(ApiResponse.self, from: data)
-                completionHandler(jsonData)
-            } catch let jsonError {
-                print("Error: serializing \(jsonError)")
-                completionHandler(nil)
+        DispatchQueue.global().async {
+            let path = self.getQueryString(query: self.query)
+            let request: WebRequest = WebRequestImpl(website: MainConstants.apiUrl, method: .get)
+            request.setPath(path)
+            request.execute { (result) in
+                guard let data = result else { return }
+                do {
+                    let jsonData = try JSONDecoder().decode(ApiResponse.self, from: data)
+                    completionHandler(jsonData)
+                } catch let jsonError {
+                    print("Error: serializing \(jsonError)")
+                    completionHandler(nil)
+                }
             }
         }
     }
