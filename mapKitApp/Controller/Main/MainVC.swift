@@ -28,8 +28,12 @@ class MainVC: UIViewController {
     
     @objc func startSearch() {
         print("search")
+        let searchService = SearchService.shared
+        searchService.setQuery(query: "Arena")
         
-        SearchService.shared.findPlaces(query: "Arena")
+        searchService.findPlaces { (jsonData) in
+            print(jsonData)
+        }
     }
 }
 

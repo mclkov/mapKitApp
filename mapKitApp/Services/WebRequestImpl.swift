@@ -8,7 +8,7 @@
 
 import Foundation
 
-class WebRequestImpl: WebRequest {    
+class WebRequestImpl: WebRequest {
     var url: String
     var method: RequestMethod
     
@@ -64,15 +64,13 @@ class WebRequestImpl: WebRequest {
     }
     
     func getRequest() -> URLRequest? {
-        guard let url = parseUrl() else { print("here")
-            return nil }
+        guard let url = parseUrl() else { return nil }
         return URLRequest(url: url)
     }
     
     func parseUrl() -> URL? {
         var urlString = "\(url)"
         if let path = self.path {
-            
             guard let path = path.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
                 print("Error: cannot parse url path")
                 return nil

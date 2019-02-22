@@ -20,16 +20,20 @@ protocol WebRequest {
 
 class SearchService {
     static let shared = SearchService()
+    var query: String = ""
     
-    func findPlaces(query: String) {
+    func setQuery(query: String) {
+        self.query = query
+    }
+    
+    func findPlaces(_ completionHandler: @escaping (_ data: ApiResponse?) -> Void) {
         let url = getQueryString(query: query)
         let request: WebRequest = WebRequestImpl(url: url, method: .get)
         request.execute { (result) in
-        guard let data = result else { return }
-        
+            guard let data = result else { return }
             do {
                 let jsonData = try JSONDecoder().decode(ApiResponse.self, from: data)
-                print(jsonData.count)
+                completionHandler(jsonData)
             } catch let jsonError {
                 print("Error: serializing \(jsonError)")
             }

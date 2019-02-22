@@ -153,7 +153,7 @@
 		606DBCE7222014EC00621EF1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				606DBCED222048C600621EF1 /* ResponseApi */,
+				606DBCED222048C600621EF1 /* API */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -167,7 +167,7 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		606DBCED222048C600621EF1 /* ResponseApi */ = {
+		606DBCED222048C600621EF1 /* API */ = {
 			isa = PBXGroup;
 			children = (
 				606DBCF1222048DE00621EF1 /* ApiResponse.swift */,
@@ -176,7 +176,7 @@
 				606DBCEE222048DE00621EF1 /* LifeSpan.swift */,
 				606DBCF2222048DE00621EF1 /* Place.swift */,
 			);
-			path = ResponseApi;
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
