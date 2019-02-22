@@ -10,6 +10,6 @@ import UIKit
 
 struct MainConstants {
     static let apiUrl = "https://musicbrainz.org/ws/2/place"
-    static let resultsLimitPerRequest = 2
-    static let startSearchAfterPressedKeyDelay = 0.5
+    static let resultsLimitPerRequest: Int = 2
+    static let startSearchAfterPressedKeyDelay: Double = 0.5
 }

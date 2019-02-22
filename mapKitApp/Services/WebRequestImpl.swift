@@ -17,12 +17,12 @@ class WebRequestImpl: WebRequest {
     private var userAgent = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
     
     
-    required init(url: String, method: RequestMethod) {
-        self.url = url
+    required init(website: String, method: RequestMethod) {
+        self.url = website
         self.method = method
     }
     
-    func setPath(path: String) {
+    func setPath(_ path: String) {
         self.path = path
     }
     

@@ -27,12 +27,24 @@ class MainVC: UIViewController {
     }
     
     @objc func startSearch() {
-        print("search")
         let searchService = SearchService.shared
-        searchService.setQuery(query: "Arena")
+        guard let query = getQuery() else { return }
         
+        searchService.setQuery(query)
+        print("search: ", query)
         searchService.findPlaces { (jsonData) in
             print(jsonData)
+        }
+    }
+    
+    func getQuery() -> String? {
+        guard let query = searchBar.text else { return nil }
+        let trimmedQuery = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if trimmedQuery == "" {
+            return nil
+        } else {
+            return query
         }
     }
 }

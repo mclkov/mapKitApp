@@ -14,7 +14,8 @@ enum RequestMethod {
 }
 
 protocol WebRequest {
-    init(url: String, method: RequestMethod)
+    init(website: String, method: RequestMethod)
+    func setPath(_ path: String)
     func execute(completionHandler: @escaping (_ result: Data?) -> Void)
 }
 
@@ -22,13 +23,14 @@ class SearchService {
     static let shared = SearchService()
     var query: String = ""
     
-    func setQuery(query: String) {
+    func setQuery(_ query: String) {
         self.query = query
     }
     
     func findPlaces(_ completionHandler: @escaping (_ data: ApiResponse?) -> Void) {
-        let url = getQueryString(query: query)
-        let request: WebRequest = WebRequestImpl(url: url, method: .get)
+        let path = getQueryString(query: query)
+        let request: WebRequest = WebRequestImpl(website: MainConstants.apiUrl, method: .get)
+        request.setPath(path)
         request.execute { (result) in
             guard let data = result else { return }
             do {
@@ -41,6 +43,6 @@ class SearchService {
     }
     
     func getQueryString(query: String) -> String {
-        return "\(MainConstants.apiUrl)?query=\(query)&limit=\(MainConstants.resultsLimitPerRequest)&offset=0&fmt=json"
+        return "?query=\(query)&limit=\(MainConstants.resultsLimitPerRequest)&offset=0&fmt=json"
     }
 }
